@@ -24,7 +24,7 @@ tn = 10
 ###############
 
 scheme = SchemeDZ1(c)
-border_conditions = BorderConditions(type_of_boundary_condition='outflow')  # periodic, outflow
+border_conditions = BorderConditions(type_of_boundary_condition='periodic')  # periodic, outflow
 
 grid = Grid(x0=x0, xn=xn, t0=t0, tn=tn, step_x=step, step_t=step)
 
