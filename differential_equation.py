@@ -14,6 +14,12 @@ class DifferentialEquation:
     def set_border_conditions(self, border_conditions):
         self.border_conditions_ = border_conditions
 
+    def set_initial_conditions(self, initial_conditions):
+        self.initial_conditions_ = initial_conditions
+
+    def set_grid(self, grid):
+        self.grid_ = grid
+
     def get_grid(self):
         return self.grid_
 
@@ -28,9 +34,6 @@ class DifferentialEquation:
 
     def get_solution(self):
         return self.solution_
-
-    def set_grid(self, grid):
-        self.grid_ = grid
 
     def solve_eq(self):
         if self.grid_ is not None:
