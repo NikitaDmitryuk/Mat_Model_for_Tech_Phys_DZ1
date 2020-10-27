@@ -7,6 +7,25 @@ from matplotlib import cm
 class Visualizer:
 
     @staticmethod
+    def x_t_diagram(diff_eq):
+        solution = diff_eq.get_solution()
+        ls = sum(solution.get_u(), [])
+        grid = solution.get_grid()
+        extent = [*grid.get_x_lim(), *grid.get_t_lim()]
+        fig, ax = plt.subplots()
+        image = ax.imshow(solution.get_u(), cmap=cm.coolwarm, origin='lower', extent=extent, vmin=min(ls), vmax=max(ls),
+                          aspect="auto")
+        cbar = fig.colorbar(image, ax=ax, fraction=.1)
+        cbar.set_label(r'$U$, значение функции')
+
+        ax.set_xlabel(r'$x$, координата')
+        ax.set_ylabel(r'$t$, время')
+
+        plt.title(Visualizer.get_ps_test(diff_eq))
+
+        plt.show()
+
+    @staticmethod
     def get_ps_test(diff_eq):
 
         ps_text = ''

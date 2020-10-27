@@ -17,6 +17,12 @@ class Grid:
         self.t_list_ = []
         self.generate_mesh()
 
+    def get_x_lim(self):
+        return [self.x0_, self.xn_]
+
+    def get_t_lim(self):
+        return [self.t0_, self.tn_]
+
     def generate_mesh(self):
         self.x_list_ = np.linspace(self.x0_, self.xn_, self.num_step_x_)
         self.t_list_ = np.linspace(self.t0_, self.tn_, self.num_step_t_)

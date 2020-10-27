@@ -11,6 +11,9 @@ class DifferentialEquation:
         self.grid_ = grid
         self.solution_ = Solution(initial_conditions, grid)
 
+    def set_border_conditions(self, border_conditions):
+        self.border_conditions_ = border_conditions
+
     def get_grid(self):
         return self.grid_
 
