@@ -1,5 +1,3 @@
-from solution import Solution
-
 
 class BorderConditions:
 
@@ -25,7 +23,7 @@ class BorderConditions:
     def get_right_bc(self, t):
         return self.right_bc_(t)
 
-    def boundary_condition_handler(self, solution: Solution):
+    def boundary_condition_handler(self, solution):
         solution.get_u_n(-1).insert(0, self.left_bc_(solution.get_last_time()))
         solution.get_u_n(-1).append(self.right_bc_(solution.get_last_time()))
 

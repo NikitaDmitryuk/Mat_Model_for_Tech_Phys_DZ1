@@ -4,9 +4,13 @@ from border_conditions import BorderConditions
 from scheme_dz1 import SchemeDZ1
 from grid import Grid
 from math import exp
+from visualizer import Visualizer
 
 
 def initial_conditions(x):
+    """
+    U = exp(- x^2 / 2) + 2 * exp(- (x - 1) ^ 2 / 2)
+    """
     u1 = 1
     u2 = 2
     return u1 * exp(- x ** 2 / 2) + u2 * exp(- (x - 1) ** 2 / 2)
@@ -34,4 +38,6 @@ diff_eq = DifferentialEquation(scheme=scheme,
                                grid=grid)
 
 diff_eq.solve_eq()
-diff_eq.diff_eq_visualization(surface=True)  # temporary_layers=[0, 10, 70, 80, 90, 99]
+
+Visualizer.plot_solution_surface(diff_eq)
+Visualizer.plot_solution(diff_eq)  # temporary_layers=[0, 10, 70, 80, 90, 99], num_plot=3

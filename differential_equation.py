@@ -1,5 +1,4 @@
 
-from visualizer import Visualizer
 from solution import Solution
 
 
@@ -12,6 +11,21 @@ class DifferentialEquation:
         self.grid_ = grid
         self.solution_ = Solution(initial_conditions, grid)
 
+    def get_grid(self):
+        return self.grid_
+
+    def get_scheme(self):
+        return self.scheme_
+
+    def get_initial_conditions(self):
+        return self.initial_conditions_
+
+    def get_border_conditions(self):
+        return self.border_conditions_
+
+    def get_solution(self):
+        return self.solution_
+
     def set_grid(self, grid):
         self.grid_ = grid
 
@@ -20,6 +34,3 @@ class DifferentialEquation:
             self.solution_ = self.scheme_.solve(self.grid_, self.initial_conditions_, self.border_conditions_)
         else:
             print("Не задана область расчета")
-
-    def diff_eq_visualization(self, temporary_layers=0, surface=False):
-        Visualizer.plot_solution(self.solution_, temporary_layers, surface)
