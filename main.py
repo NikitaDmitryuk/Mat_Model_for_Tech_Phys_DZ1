@@ -3,14 +3,17 @@ from differential_equation import DifferentialEquation
 from border_conditions import BorderConditions
 from scheme_dz1 import SchemeDZ1
 from grid import Grid
-from math import exp
 from visualizer import Visualizer
+
+scheme = SchemeDZ1()
+Visualizer.scheme_analysis(scheme)
 
 
 def initial_conditions_1(x):
     """
     U = exp(- x^2 / 2) + 2 * exp(- (x - 1) ^ 2 / 2)
     """
+    from math import exp
     u1 = 1
     u2 = 2
     return u1 * exp(- x ** 2 / 2) + u2 * exp(- (x - 1) ** 2 / 2)
