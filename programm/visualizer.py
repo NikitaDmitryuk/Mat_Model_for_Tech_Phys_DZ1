@@ -2,9 +2,19 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 from matplotlib import cm
+import os
 
 
 class Visualizer:
+    
+    pwd = os.getcwd()
+    path = f'{pwd}/plots'
+    
+    if not os.path.exists(path):
+        os.mkdir(path)
+        print("Directory " , path ,  " Created ")
+    else:
+        print("Directory " , path ,  " already exists")
 
     @staticmethod
     def scheme_analysis(scheme, name, c_range=(0, 1.0), k_dx_range=(-2, 2)):
