@@ -7,7 +7,7 @@ from matplotlib import cm
 class Visualizer:
 
     @staticmethod
-    def scheme_analysis(scheme, c_range=(0, 0.8), k_dx_range=(-2, 2)):
+    def scheme_analysis(scheme, name, c_range=(0, 1.0), k_dx_range=(-2, 2)):
 
         scheme.generate_q_gamma()
 
@@ -30,6 +30,8 @@ class Visualizer:
         ax.set_xlabel(r'$k \Delta t$')
         ax.set_ylabel(r'$C$')
         ax.set_zlabel(r'$|q|$')
+        
+        fig.savefig(f'plots/q_{name}.pdf', bbox_inches='tight', transparent=False)
 
         fig = plt.figure(2)
         bx = fig.add_subplot(111, projection='3d')
@@ -39,11 +41,13 @@ class Visualizer:
         bx.set_xlabel(r'$k \Delta t$')
         bx.set_ylabel(r'$C$')
         bx.set_zlabel(r'$|\gamma|$')
+        
+        fig.savefig(f'plots/gamma_{name}.pdf', bbox_inches='tight', transparent=False)
 
-        plt.show()
+        #plt.show()
 
     @staticmethod
-    def x_t_diagram(diff_eq):
+    def x_t_diagram(diff_eq, name):
         solution = diff_eq.get_solution()
         ls = sum(solution.get_u(), [])
         grid = solution.get_grid()
@@ -58,8 +62,10 @@ class Visualizer:
         ax.set_ylabel(r'$t$, время')
 
         plt.title(Visualizer.get_ps_test(diff_eq))
+        
+        fig.savefig(f'plots/U_{name}.pdf', bbox_inches='tight', transparent=False)
 
-        plt.show()
+        # plt.show()
 
     @staticmethod
     def get_ps_test(diff_eq):
@@ -72,7 +78,7 @@ class Visualizer:
         return f"Решение {ps_text}"
 
     @staticmethod
-    def plot_solution(diff_eq, temporary_layers=None, num_plot=3):
+    def plot_solution(diff_eq, name, temporary_layers=None, num_plot=3):
 
         solution = diff_eq.get_solution()
 
@@ -93,10 +99,11 @@ class Visualizer:
         ax.set_xlabel(r'$x$, координата')
         ax.set_ylabel(r'$U$, значение функции')
         plt.title(Visualizer.get_ps_test(diff_eq))
-        plt.show()
+        fig.savefig(f'plots/solution_{name}.pdf', bbox_inches='tight', transparent=False)
+        # plt.show()
 
     @staticmethod
-    def plot_solution_surface(diff_eq):
+    def plot_solution_surface(diff_eq, name):
 
         solution = diff_eq.get_solution()
         ls = sum(solution.get_u(), [])
@@ -113,5 +120,7 @@ class Visualizer:
         ax.set_zlabel(r'$U$, значение функции')
 
         plt.title(Visualizer.get_ps_test(diff_eq))
+        
+        fig.savefig(f'plots/solution_surface_{name}.pdf', bbox_inches='tight', transparent=False)
 
-        plt.show()
+        #plt.show()

@@ -5,7 +5,7 @@ __pycache__/
 
 # PyCharm
 .idea/
-
+plots/
 # C extensions
 *.so
 
